@@ -1,0 +1,74 @@
+body {
+	background: url(img/montain.jpg) no-repeat center center fixed;
+	background-size: cover;
+	overflow: hidden;
+}
+
+.snow {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+}
+
+.snow__layer {
+	position: absolute;
+	right: -100px;
+	left: -100px;
+	animation: wind 2s ease-in-out infinite alternate;
+	transform: translateX(-50px);
+	perspective: 100px;
+}
+
+.snow__layer::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: 2000px;
+	background: url(img/snow-light.png);
+	animation: falllight 4s linear infinite;
+}
+
+.snow__layer:nth-child(1) {
+	animation-duration: 5s;
+}
+
+.snow__layer:nth-child(1)::after {
+	background: url(img/snow-medium.png);
+	animation: fallmedium 10s linear infinite;
+}
+
+.snow__layer:nth-child(2) {
+	animation-duration: 10s;
+}
+
+.snow__layer:nth-child(2)::after {
+	background: url(img/snow-blur.png);
+	animation: fallblur 20s linear infinite;
+}
+
+@keyframes falllight {
+	from {
+		transform: translateY(-1000px) translateZ(75px);
+	}
+}
+
+@keyframes fallmedium {
+	from {
+		transform: translateY(-1000px) translateZ(50px);
+	}
+}
+
+@keyframes fallblur {
+	from {
+		transform: translateY(-1000px);
+	}
+}
+
+@keyframes wind {
+	to {
+		transform: translateX(50px);
+	}
+}
